@@ -1,0 +1,22 @@
+class Conta {
+    private String numeroConta;
+    // outros atributos e métodos da classe Conta
+
+    public Conta(String numeroConta) {
+        this.numeroConta = numeroConta;
+    }
+
+    public String getNumeroConta() {
+        return numeroConta;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null || getClass() != obj.getClass())
+            return false;
+        Conta outraConta = (Conta) obj;
+        return numeroConta.equals(outraConta.getNumeroConta());
+    }
+}
