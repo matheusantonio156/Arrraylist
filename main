@@ -1,0 +1,36 @@
+public class Main {
+    public static void main(String[] args) {
+        Banco banco = new Banco();
+
+        // Criando algumas contas e adicionando ao banco
+        Conta conta1 = new Conta("123");
+        Conta conta2 = new Conta("456");
+        Conta conta3 = new Conta("789");
+        banco.adicionarConta(conta1);
+        banco.adicionarConta(conta2);
+        banco.adicionarConta(conta3);
+
+        // Testando os métodos de busca
+        try {
+            Conta contaEncontrada1 = banco.buscarContaPorNumero("456");
+            System.out.println("Conta encontrada: " + contaEncontrada1.getNumeroConta());
+        } catch (ContaNaoEncontradaException e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            Conta contaEncontrada2 = banco.buscarConta(new Conta("789"));
+            System.out.println("Conta encontrada: " + contaEncontrada2.getNumeroConta());
+        } catch (ContaNaoEncontradaException e) {
+            System.out.println(e.getMessage());
+        }
+
+        // Testando conta não encontrada
+        try {
+            Conta contaEncontrada3 = banco.buscarContaPorNumero("999");
+            System.out.println("Conta encontrada: " + contaEncontrada3.getNumeroConta());
+        } catch (ContaNaoEncontradaException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
